@@ -1,0 +1,107 @@
+@font-face {
+  font-family: 'Alibaba PuHuiTi';
+
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F5F5F5;
+  font-family: 'Alibaba PuHuiTi', Arial, sans-serif; /* 修改字体 */
+  font-size: 24px; /* 全局字号 */
+}
+
+/* App.vue styles */
+.app-header {
+  --logo-size: 60px; /* 可按需调整图片高度 */
+  --logo-font-scale: 0.75; /* 调整：原为 0.8，减小字号 */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.app-header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-header__logo {
+  height: var(--logo-size);
+  width: auto;
+  display: block;
+}
+
+.app-header__title {
+  font-size: 36px; /* 修改为 36px */
+  line-height: 1;
+  font-weight: 600;
+  margin: 0;
+  background: none; /* 移除之前的浅色背景 */
+}
+
+/* 覆盖旧的 h1 样式避免干扰 */
+.app-header h1 {
+  /* #todelete: 已被 .app-header__title 取代 */
+  display: none;
+}
+
+main {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-footer {
+  padding: 1rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  background-color: rgba(250, 250, 250, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: inherit;
+}
+
+/* 备案信息：不显眼、小号、浅色 */
+.page-footer .footer-icp {
+  display: inline-block;
+  font-size: 16px; /* 小号字体 */
+  color: rgba(0, 0, 0, 0.38); /* 浅色文字 */
+  opacity: 0.95;
+}
+
+/* 链接样式：默认浅色无下划线，悬停时稍微显眼 */
+.page-footer .footer-icp a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .15s ease, text-decoration .15s ease;
+}
+
+.page-footer .footer-icp a:hover {
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: underline;
+}
+
+.sep {
+  margin: 0 0.5rem;
+}

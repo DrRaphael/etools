@@ -1,0 +1,87 @@
+import { createI18n } from 'vue-i18n'
+
+const messages = {
+  'zh-CN': {
+    appTitle: '嵌入式电子工具箱',
+    homeTitle: '工具列表',
+    pcbCurrentCalculator: 'PCB 电流计算工具',
+    pcbStandard: '采用标准',
+    traceWidth: '线宽',
+    temperatureRise: '温升',
+    layer: '层',
+    externalLayer: '外层',
+    internalLayer: '内层',
+    traceWidthUnit: 'mm',
+    temperatureRiseUnit: '°C',
+    traceWidthCalculatorTitle: '走线线宽计算',
+    current: '电流',
+    copperThickness: '铜厚',
+    ambientTemperature: '环境温度',
+    result: '计算结果',
+    currentUnit: 'A',
+    copperThicknessUnit: 'oz',
+    ambientTemperatureUnit: '°C',
+    calculateCurrent: '计算电流',
+    calculateTraceWidth: '计算线宽',
+    calculateTemperatureRise: '计算温升',
+    // 校验与提示
+    invalidInput: '请输入有效的数值',
+    positiveRequired: '{field}必须为正数',
+    missingParamsForCurrent: '请填写「线宽」与「温升」以计算电流',
+    missingParamsForTraceWidth: '请填写「电流」与「温升」以计算线宽',
+    missingParamsForTemperatureRise: '请填写「电流」与「线宽」以计算温升',
+    notImplemented: '计算公式待实现',
+    standardNotImplemented: '所选标准暂未实现：{standard}',
+    unitMm: 'mm',
+    unitMil: 'mil',
+    visitors: '访问人数',
+    icpRecord: '备案号',
+    icpNumber: '苏ICP备17040485号-3',
+  },
+  'en-US': {
+    appTitle: 'Embedded Electronics Toolbox',
+    homeTitle: 'Tool List',
+    pcbCurrentCalculator: 'PCB Current Calculator',
+    pcbStandard: 'PCB Standard',
+    traceWidth: 'Trace Width',
+    temperatureRise: 'Temperature Rise',
+    layer: 'Layer',
+    externalLayer: 'External',
+    internalLayer: 'Internal',
+    traceWidthUnit: 'mm',
+    temperatureRiseUnit: '°C',
+    traceWidthCalculatorTitle: 'Trace Width Calculator',
+    current: 'Current',
+    copperThickness: 'Copper Thickness',
+    ambientTemperature: 'Ambient Temperature',
+    result: 'Result',
+    currentUnit: 'A',
+    copperThicknessUnit: 'oz',
+    ambientTemperatureUnit: '°C',
+    calculateCurrent: 'Calculate Current',
+    calculateTraceWidth: 'Calculate Trace Width',
+    calculateTemperatureRise: 'Calculate Temperature Rise',
+    // Validation and hints
+    invalidInput: 'Please enter a valid number',
+    positiveRequired: '{field} must be a positive number',
+    missingParamsForCurrent: 'Provide "Trace Width" and "Temperature Rise" to calculate current',
+    missingParamsForTraceWidth: 'Provide "Current" and "Temperature Rise" to calculate trace width',
+    missingParamsForTemperatureRise: 'Provide "Current" and "Trace Width" to calculate temperature rise',
+    notImplemented: 'Formula not implemented yet',
+    standardNotImplemented: 'Selected standard not implemented: {standard}',
+    unitMm: 'mm',
+    unitMil: 'mil',
+    visitors: 'Visitors',
+    icpRecord: 'ICP',
+    icpNumber: '苏ICP备17040485号-3',
+  },
+}
+
+const i18n = createI18n({
+  legacy: false, // 必须设为 false，才能使用 Composition API
+  locale: 'zh-CN', // 默认语言
+  fallbackLocale: 'en-US', // 回退语言
+  messages,
+})
+
+export default i18n
