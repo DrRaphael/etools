@@ -1,18 +1,30 @@
 @font-face {
   font-family: 'Alibaba PuHuiTi';
-
+  /* 请将字体文件放到 src/assets/fonts/ 下，名称可按需调整 */
+  src: url('./assets/fonts/AlibabaPuHuiTi-Regular.woff2') format('woff2'),
+       url('./assets/fonts/AlibabaPuHuiTi-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-/* Global styles */
-body {
+/* 全局字体变量：整个站点使用阿里巴巴普惠体 */
+:root {
+  --app-font-family: 'Alibaba PuHuiTi', "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 强制全站继承阿里巴巴普惠体（确保组件库或局部样式不易覆盖） */
+html, body {
+  font-family: var(--app-font-family);
   margin: 0;
   padding: 0;
   background-color: #F5F5F5;
-  font-family: 'Alibaba PuHuiTi', Arial, sans-serif; /* 修改字体 */
   font-size: 24px; /* 全局字号 */
+}
+
+/* 强制所有元素及伪元素继承（可降低局部覆盖导致的差异） */
+*, *::before, *::after {
+  font-family: inherit;
 }
 
 /* App.vue styles */
@@ -70,7 +82,11 @@ main {
 
 .page-footer {
   padding: 1rem 2rem;
-  text-align: center;
+  /* 使用 flex 保证左右充满且内容水平居中，元素平齐 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem; /* 元素间距 */
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   background-color: rgba(250, 250, 250, 0.25);
   backdrop-filter: blur(10px);
@@ -82,15 +98,16 @@ main {
   color: inherit;
 }
 
-/* 备案信息：不显眼、小号、浅色 */
-.page-footer .footer-icp {
+/* 统一样式：版权与备案信息平齐，字体更小且颜色更浅 */
+.page-footer .footer-icp,
+.page-footer .footer-copyright {
   display: inline-block;
-  font-size: 16px; /* 小号字体 */
+  font-size: 12px; /* 更小号字体，保持低调 */
   color: rgba(0, 0, 0, 0.38); /* 浅色文字 */
-  opacity: 0.95;
+  vertical-align: middle;
 }
 
-/* 链接样式：默认浅色无下划线，悬停时稍微显眼 */
+/* 链接样式：默认浅色无下划线，悬停时微显眼 */
 .page-footer .footer-icp a {
   color: inherit;
   text-decoration: none;
@@ -102,6 +119,17 @@ main {
   text-decoration: underline;
 }
 
+/* 新增：版权信息样式，尽量不显眼 */
+.page-footer .footer-copyright {
+  display: inline-block;
+  font-size: 14px; /* 更小号字体 */
+  color: rgba(0, 0, 0, 0.38); /* 浅色文字 */
+  margin-left: 0.6rem;
+  vertical-align: middle;
+  opacity: 0.9;
+}
+
+/* 保持已有分隔风格（如果存在） */
 .sep {
   margin: 0 0.5rem;
 }

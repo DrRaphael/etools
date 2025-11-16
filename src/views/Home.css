@@ -58,7 +58,8 @@ h2 {
 }
 
 .tool-card__title {
-  font-family: 'Alibaba PuHuiTi', Arial, sans-serif;
+  /* 使用全局字体变量，避免重复声明字体文件 */
+  font-family: var(--app-font-family);
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 0.75rem;
