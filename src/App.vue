@@ -98,7 +98,7 @@ watch(() => t('appTitle'), (val) => { document.title = val })
 
 /* 语言下拉使用与其它下拉相似的视觉风格，但尺寸略小 */
 .lang-switcher .lang-select {
-  font-size: 0.6rem;      /* 调小一号 */
+  font-size: 0.75rem;      /* 调小一号 */
   line-height: 1.2;
   padding: 0.3rem 0.7rem;  /* 增加内边距 */
   height: 34px;
@@ -115,7 +115,7 @@ watch(() => t('appTitle'), (val) => { document.title = val })
 /* 窄屏再稍微缩小 */
 @media (max-width: 600px) {
   .lang-switcher .lang-select {
-    font-size: 0.6rem; /* 同步调小 */
+    font-size: 0.7rem; /* 同步调小 */
     height: 32px;
     padding: 0.25rem 0.6rem;
     min-width: 100px;

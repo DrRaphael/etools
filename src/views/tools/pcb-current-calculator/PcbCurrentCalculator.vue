@@ -2,11 +2,13 @@
 import { ref, watch, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import './PcbCurrentCalculator.css'
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 // 电气参数
+// 将 layer 使用标准化键，不使用本地化文本作为 value
 const standard = ref('IPC-2221')
-const layer = ref('外层')
+// 默认使用 external（外层），值为 canonical key
+const layer = ref<'external' | 'internal'>('external')
 const copper = ref('1') // 单位 oz
 
 // 计算参数（设置默认值）
@@ -102,10 +104,10 @@ function calculateCurrent(): void {
   // k 值选择（保留 IPC-2512 的占位）
   let k = 0.048 // default IPC-2221 外层
   if (standard.value === 'IPC-2221') {
-    k = layer.value === '外层' ? 0.048 : 0.024
+    k = layer.value === 'external' ? 0.048 : 0.024
   } else if (standard.value === 'IPC-2512') {
     // 占位值（可后续调整/替换为精确值）
-    k = layer.value === '外层' ? 0.035 : 0.0175
+    k = layer.value === 'external' ? 0.035 : 0.0175
   }
 
   // 公式计算
@@ -131,9 +133,9 @@ function calculateTraceWidth(): void {
   // k 值选择
   let k = 0.048
   if (standard.value === 'IPC-2221') {
-    k = layer.value === '外层' ? 0.048 : 0.024
+    k = layer.value === 'external' ? 0.048 : 0.024
   } else if (standard.value === 'IPC-2512') {
-    k = layer.value === '外层' ? 0.035 : 0.0175
+    k = layer.value === 'external' ? 0.035 : 0.0175
   }
 
   if (k <= 0) {
@@ -213,9 +215,9 @@ function calculateTemperatureRise(): void {
   // k 值选择
   let k = 0.048
   if (standard.value === 'IPC-2221') {
-    k = layer.value === '外层' ? 0.048 : 0.024
+    k = layer.value === 'external' ? 0.048 : 0.024
   } else if (standard.value === 'IPC-2512') {
-    k = layer.value === '外层' ? 0.035 : 0.0175
+    k = layer.value === 'external' ? 0.035 : 0.0175
   }
 
   const denom = k * Math.pow(areaMil2, 0.725)
@@ -230,7 +232,8 @@ function calculateTemperatureRise(): void {
     return
   }
 
-  tempRiseValue.value = Number(deltaT.toFixed(3))
+  // 写回温升，保留 1 位小数
+  tempRiseValue.value = Number(deltaT.toFixed(1))
 }
 
 // 新增计算：将输入值换算为 mm / m，并计算副参数（截面积、单位长度电阻、总电阻、压降、功耗）
@@ -375,9 +378,10 @@ watch(() => copper.value, (newV, oldV) => {
             <div class="field">
               <label class="field-label">{{ t('layerType') }}</label>
               <div class="field-control">
+                <!-- 绑定 canonical 值，显示文本使用 t(...) -->
                 <select v-model="layer" class="unit-select select-large control-full">
-                  <option>{{ t('internalLayer') }}</option>
-                  <option>{{ t('externalLayer') }}</option>
+                  <option value="internal">{{ t('internalLayer') }}</option>
+                  <option value="external">{{ t('externalLayer') }}</option>
                 </select>
               </div>
             </div>
