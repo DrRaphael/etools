@@ -2,7 +2,7 @@
 import { ref, watch, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import './PcbCurrentCalculator.css'
-const { t, locale } = useI18n()
+const { t } = useI18n()
 
 // 电气参数
 // 将 layer 使用标准化键，不使用本地化文本作为 value

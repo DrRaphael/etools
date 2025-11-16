@@ -20,14 +20,7 @@ onMounted(() => {
   setFavicon(logoUrl)
   document.title = t('appTitle')
 
-  // 注入百度统计脚本
-  ;(window as any)._hmt = (window as any)._hmt || []
-  ;(function() {
-    const hm = document.createElement('script')
-    hm.src = 'https://hm.baidu.com/hm.js?35e56ef5bca847554cba315ef209d5e3'
-    const s = document.getElementsByTagName('script')[0]
-    s.parentNode!.insertBefore(hm, s)
-  })()
+
 })
 
 // 可选：监听语言变化时更新标题
