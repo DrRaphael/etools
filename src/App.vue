@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
 import logoUrl from './assets/logo.png'
 const { t, locale } = useI18n() // 增加 locale 用于语言切换
 
